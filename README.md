@@ -308,3 +308,40 @@ Included notebooks:
 - 21-Algorithms and Data Structures\Stacks, Queues and Deques\Stacks, Queues, and Deques Interview Problems\Stacks, Queues, Deques Interview Questions\Implement a Queue.ipynb
 - 21-Algorithms and Data Structures\Stacks, Queues and Deques\Stacks, Queues, and Deques Interview Problems\Stacks, Queues, Deques Interview Questions\Implement a Stack .ipynb
 - Jupyter (iPython) Notebooks Guide.ipynb
+
+combine_notebooks_2.py
+
+This small utility combines multiple Jupyter notebooks (.ipynb) into a single notebook.
+
+Files included:
+- `combine_notebooks.py`: initial simple combiner (keeps existing behavior)
+- `combine_notebooks_2.py`: improved combiner with CLI options
+- `requirements.txt`: Python dependencies
+
+Usage
+-----
+
+Install dependencies into your Python environment:
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+Run the improved combiner from the repository root (default writes `Combined_Notebook_2.ipynb`):
+
+```powershell
+python .\combine_notebooks_2.py
+```
+
+Options:
+- `--base-dir` / `-b`: base directory to search for notebooks (default: script folder)
+- `--pattern` / `-p`: glob pattern to filter notebooks (default: `**/*.ipynb`)
+- `--output` / `-o`: output notebook filename (default: `Combined_Notebook_2.ipynb`)
+- `--quiet` / `-q`: suppress informational printing
+
+Notes
+-----
+- The script skips `.ipynb_checkpoints` directories and will not include the output file if it matches the pattern.
+- Cells missing the new `id` metadata will be assigned one; `nbformat` may warn about missing ids in older notebooks.
+
+If you want custom ordering (by folder or filename), run the script with a pattern that selects the desired notebooks and adjust ordering manually if needed.
